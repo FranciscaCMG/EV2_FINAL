@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "87de9bed-0357-4745-80d1-f42ec4b63433",
+		"name": "CarlaChile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getReparacion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8093/reparacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8093",
+					"path": [
+						"reparacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddReparacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"n_patente\":\"p125\",\n    \"fecha_ing\":\"12-04-2024\",\n    \"hora_ing\":\"12:45\",\n    \"bono\":true,\n    \"monto_total_tiporep\":3434.89,\n    \"recargo\":100.0,\n    \"descuento\":2344.45,\n    \"iva\":2322.3,\n    \"costo_total\":18200,\n    \"fecha_sal\":\"15-12-2024\",\n    \"hora_sal\":\"234:45\",\n    \"fecha_sal_cli\":\"12-04-2024\",\n    \"hora_sal_cli\":\"13:17\",\n    \"tipo_reparacion\":3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8093/reparacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8093",
+					"path": [
+						"reparacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getVehiculos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/vehiculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"vehiculo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addVehiculo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"npatente\":\"p127\",\n    \"marca\":\"Toyota\",\n    \"modelo\":\"Hilux\",\n    \"tipo_auto\":\"Furgoneta\",\n    \"anio_fabricacion\":\"2010\",\n    \"tipo_motor\":\"2.0\",\n    \"n_asientos\":5,\n    \"kilometraje\":23\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8092/vehiculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"vehiculo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getLista",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8096/listas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8096",
+					"path": [
+						"listas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getVByPatent",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/vehiculo/p123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"vehiculo",
+						"p123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTiposReparaciones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8093/reparacion/tiposreparacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8093",
+					"path": [
+						"reparacion",
+						"tiposreparacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reparacionesPorMes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8093/reparacion/12/2024",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8093",
+					"path": [
+						"reparacion",
+						"12",
+						"2024"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reporte1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8097/reportes/reporte1/12/2024",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8097",
+					"path": [
+						"reportes",
+						"reporte1",
+						"12",
+						"2024"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reporte2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8097/reportes/reporte2/12/2024",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8097",
+					"path": [
+						"reportes",
+						"reporte2",
+						"12",
+						"2024"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dosMesesYActual",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8093/reparacion/dosmeses/12/2024",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8093",
+					"path": [
+						"reparacion",
+						"dosmeses",
+						"12",
+						"2024"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dosMesesYActualList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8096/listas/dosmeses/12/2024",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8096",
+					"path": [
+						"listas",
+						"dosmeses",
+						"12",
+						"2024"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

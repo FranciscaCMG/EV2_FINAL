@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;VehiculoEntity.java&apos; to &apos;cl.usachLista/src/main/java/cl.usach.ms_listas.models&apos;&#x0A;- Original project: &apos;ms-vehiculos&apos;&#x0A;- Destination element: &apos;cl.usachLista/src/main/java/cl.usach.ms_listas.models&apos;&#x0A;- Original element: &apos;cl.usach.ms_vehiculos.entities.VehiculoEntity.java&apos;" description="Copy compilation unit" destination="=cl.usachLista/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;cl.usach.ms_listas.models" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;cl.usach.ms_vehiculos.entities{VehiculoEntity.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1718001304544" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,5 @@
+package cl.usach.ms_reportes.controllers;
+
+public class ReportesController {
+
+}

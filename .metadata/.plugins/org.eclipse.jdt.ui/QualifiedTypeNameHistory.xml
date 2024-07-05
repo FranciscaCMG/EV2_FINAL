@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.net.http.HttpClient"/>
+    <fullyQualifiedTypeName name="org.springframework.web.reactive.function.client.WebClient"/>
+    <fullyQualifiedTypeName name="io.netty.channel.ChannelOption"/>
+    <fullyQualifiedTypeName name="java.time.Duration"/>
+    <fullyQualifiedTypeName name="org.springframework.http.client.reactive.ReactorClientHttpConnector"/>
+    <fullyQualifiedTypeName name="cl.usach.ms_listas.services.ListasService"/>
+    <fullyQualifiedTypeName name="java.net.http.HttpHeaders"/>
+    <fullyQualifiedTypeName name="org.apache.tomcat.util.http.parser.MediaType"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpHeaders"/>
+    <fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
+    <fullyQualifiedTypeName name="cl.usach.ms_vehiculos.entities.VehiculoEntity"/>
+    <fullyQualifiedTypeName name="cl.usach.ms_listas.models.ReparacionEntity"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.core.type.TypeReference"/>
+    <fullyQualifiedTypeName name="cl.usach.ms_listas.models.ListaResponse"/>
+    <fullyQualifiedTypeName name="cl.usach.ms_listas.models.VehiculoEntity"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="cl.usach.ms_reparaciones.repositories.TipoReparacionRepository"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="cl.usach.ms_reparaciones.services.TipoReparacionService"/>
+    <fullyQualifiedTypeName name="cl.usach.ms_reparaciones.entities.TipoReparacionesEntity"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="cl.usach.ms_reparaciones.entities.ReparacionEntity"/>
+    <fullyQualifiedTypeName name="cl.usach.ms_reportes.models.ListaReporte1"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="cl.usach.ms_reportes.services.ReportesService"/>
+    <fullyQualifiedTypeName name="java.util.Collection"/>
+</qualifiedTypeNameHistroy>

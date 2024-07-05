@@ -1,0 +1,200 @@
+package cl.usach.ms_reparaciones.services;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.YearMonth;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cl.usach.ms_reparaciones.entities.ReparacionEntity;
+import cl.usach.ms_reparaciones.models.ReparacionReq;
+import cl.usach.ms_reparaciones.repositories.ReparacionRepository;
+import jakarta.persistence.EntityNotFoundException;
+
+@Service
+public class ReparacionService {
+
+    @Autowired
+    ReparacionRepository reparacionRepository;
+
+    public List<ReparacionEntity> getAll() {
+        return reparacionRepository.findAll();
+    }
+
+    public ReparacionEntity getReparacionById(Long id) {
+        return reparacionRepository.findById(id).orElse(null);
+    }
+    
+    public List<ReparacionEntity> getByMesAnio(int mes, int anio) {
+    	Calendar calendar = Calendar.getInstance();
+    	calendar.clear();
+    	calendar.set(Calendar.MONTH, mes-1);
+    	calendar.set(Calendar.YEAR, anio);
+    	calendar.set(Calendar.DAY_OF_MONTH, 1);
+    	Date date = calendar.getTime();
+    	System.out.println(date);
+    	Timestamp ts = new Timestamp(date.getTime()); 
+    	
+    	Calendar calendar2 = Calendar.getInstance();
+    	calendar2.clear();
+    	calendar2.set(Calendar.MONTH, mes-1);
+    	calendar2.set(Calendar.YEAR, anio);
+    	calendar2.set(Calendar.DAY_OF_MONTH, YearMonth.of( anio , mes )
+    	         .atEndOfMonth().getDayOfMonth());
+    	Date date2 = calendar2.getTime();
+    	System.out.println(date2);
+    	Timestamp ts2 = new Timestamp(date2.getTime()); 
+    	
+    	
+    	
+        return reparacionRepository.getByMonth(ts, ts2);
+    }
+    
+    
+    public List<ReparacionEntity> getByDosMesesYActual(int mes, int anio) {
+    	
+    	List<ReparacionEntity> mesActual = getByMesAnio(mes, anio);
+    	List<ReparacionEntity> mesActualMenosUno = getByMesAnio(mes-1, anio);
+    	List<ReparacionEntity> mesActualMenosDos = getByMesAnio(mes-2, anio);
+    	
+    	List<ReparacionEntity> response = new ArrayList<>();
+    	
+    	response.addAll(mesActual);
+    	response.addAll(mesActualMenosUno);
+    	response.addAll(mesActualMenosDos);
+    	
+        return response;
+    }
+
+    public ReparacionEntity saveReparacion(ReparacionReq reparacion) {
+    	try {
+    	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    	    Date parsedDate = dateFormat.parse(reparacion.getFecha_sal());
+    	    Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+    	
+    	ReparacionEntity re = new ReparacionEntity();
+    	
+    	
+    	re.setBono(reparacion.getBono());
+    	re.setCosto_total(reparacion.getCosto_total());
+    	re.setDescuento(reparacion.getDescuento());
+    	re.setFecha_ing(reparacion.getFecha_ing());
+    	re.setFecha_sal(timestamp);
+    	re.setFecha_sal_cli(reparacion.getFecha_sal_cli());
+    	re.setHora_ing(reparacion.getHora_ing());
+    	re.setHora_sal(reparacion.getHora_sal());
+    	re.setIva(reparacion.getIva());
+    	re.setMonto_total_tiporep(reparacion.getMonto_total_tiporep());
+    	re.setRecargo(reparacion.getRecargo());
+    	re.setTipo_reparacion(reparacion.getTipo_reparacion());
+    	re.setN_patente(reparacion.getN_patente());
+    	re.setHora_sal_cli(reparacion.getHora_sal_cli());
+    	re.setN_patente(reparacion.getN_patente());
+    	
+        ReparacionEntity reparacionNew = reparacionRepository.save(re);
+        return reparacionNew;
+    	} catch(Exception e) { //this generic but you can control another types of exception
+    	    // look the origin of excption 
+    	}
+		return null;
+    }
+
+    public Integer obtenerReparacionPorPatente(String patente) {
+        return reparacionRepository.findByPatente(patente);
+    }
+
+
+    public Integer reparaciondesc(String patente, String tipoMotor){
+        int cantidad = obtenerReparacionPorPatente(patente);
+        switch (tipoMotor){
+            case "GASOLINA":
+                if (cantidad>=1 && cantidad<=2){
+                    return 5;
+                }else if (cantidad>=3 && cantidad<=5){
+                    return 10;
+
+                }else if (cantidad>=6 && cantidad<=9) {
+                    return 15;
+                } else if (cantidad>=10) {
+                    return 20;
+                }else {
+                    return 0;
+                }
+            case "DIESEL":
+                if (cantidad>=1 && cantidad<=2){
+                    return 7;
+                }else if (cantidad>=3 && cantidad<=5){
+                    return 12;
+
+                }else if (cantidad>=6 && cantidad<=9) {
+                    return 17;
+                } else if (cantidad>=10) {
+                    return 22;
+                }else {
+                    return 0;
+                }
+            case "HIBRIDO":
+                if (cantidad>=1 && cantidad<=2){
+                    return 10;
+                }else if (cantidad>=3 && cantidad<=5){
+                    return 15;
+
+                }else if (cantidad>=6 && cantidad<=9) {
+                    return 20;
+                } else if (cantidad>=10) {
+                    return 25;
+                }else {
+                    return 0;
+                }
+            case "ELECTRICO":
+                if (cantidad>=1 && cantidad<=2){
+                    return 8;
+                }else if (cantidad>=3 && cantidad<=5){
+                    return 13;
+
+                }else if (cantidad>=6 && cantidad<=9) {
+                    return 18;
+                } else if (cantidad>=10) {
+                    return 23;
+                }else {
+                    return 0;
+                }
+        }
+        return -1;
+    }
+
+    public ReparacionEntity modificarReparacionSalida(Long id, String fecha_salida, String hora_salida) {
+        Optional<ReparacionEntity> reparacion = reparacionRepository.findById(id);
+        if (reparacion.isPresent()) {
+            ReparacionEntity reparacionEntity = reparacion.get();
+            reparacionEntity.setFecha_sal_cli(fecha_salida);
+            reparacionEntity.setHora_sal_cli(hora_salida);
+            return reparacionRepository.save(reparacionEntity);
+        } else {
+            // Aquí puedes manejar el caso en que no se encuentra la reparación
+            // Por ejemplo, puedes lanzar una excepción o retornar null
+            throw new EntityNotFoundException("Reparación con id " + id + " no encontrada");
+        }
+    }
+
+    public ReparacionEntity modificarReparacionListo(Long id, Timestamp fecha_salida, String hora_salida) {
+        Optional<ReparacionEntity> reparacion = reparacionRepository.findById(id);
+        if (reparacion.isPresent()) {
+            ReparacionEntity reparacionEntity = reparacion.get();
+            reparacionEntity.setFecha_sal(fecha_salida);
+            reparacionEntity.setHora_sal(hora_salida);
+            return reparacionRepository.save(reparacionEntity);
+        } else {
+            return null;
+        }
+    }
+
+
+
+}

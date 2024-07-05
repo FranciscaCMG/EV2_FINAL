@@ -1,0 +1,3 @@
+spring.application.name=cl.usachLista
+server:
+  port: 8092

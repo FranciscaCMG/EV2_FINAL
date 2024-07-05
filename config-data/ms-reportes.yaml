@@ -1,10 +1,5 @@
 server:
   port: 8097
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/reportes
-    username: postgres
-    password: admin
 eureka:
   instance:
     preferIpAddress: true
